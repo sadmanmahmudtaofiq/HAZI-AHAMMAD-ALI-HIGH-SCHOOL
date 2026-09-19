@@ -1,0 +1,45 @@
+.container {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: var(--primary);
+}
+
+header {
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding: 5px 30px;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+header nav a {
+  color: var(--white);
+}
+
+.logo_img {
+  width: 70px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logo_img:hover {
+  scale: 1.1;
+}
+
+@media (max-width: 650px) {
+  .logo_img {
+    width: 50px;
+  }
+  header nav{
+    display: none;
+  }
+  .underline{
+    width: 80%;
+  }
+}

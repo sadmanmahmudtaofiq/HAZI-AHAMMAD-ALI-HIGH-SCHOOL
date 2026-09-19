@@ -1,0 +1,71 @@
+.teachersContainer {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+.teacherSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.teacherSection section {
+  height: auto;
+  background-color: var(--secondary);
+  text-align: center;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  transition: all 0.2s;
+  gap: 10px;
+  align-items: center;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.teacherSection section:hover {
+  scale: 1.01;
+  box-shadow:
+    rgba(0, 0, 0, 0.212) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.teacherSection section img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 100%;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.teacherSection section img:hover {
+  scale: 1.1;
+}
+.teacherSection .name {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.teacherSection section p:nth-child(3) {
+  color: var(--accent);
+}
+
+.teacherSection section span {
+  background-color: var(--primary);
+  color: var(--white);
+  width: fit-content;
+  margin: auto;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+}
+
+@media (max-width: 500px) {
+  .teacherSection {
+    padding: 20px;
+  }
+}

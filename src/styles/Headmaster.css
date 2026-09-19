@@ -1,0 +1,61 @@
+.headmaster {
+  background-color: var(--primary);
+}
+
+.headmasterContainer {
+  max-width: 1200px;
+  border-radius: 10px;
+  padding: 60px 30px;
+  display: flex;
+  margin: 50px auto 50px auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.headmasterImg {
+  width: 330px;
+  height: 330px;
+  border: 5px solid var(--white);
+  object-fit: cover;
+  border-radius: 100%;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.headmasterImg:hover {
+  scale: 1.1;
+}
+
+.subtext {
+  padding: 80px;
+}
+
+.subtext h2 {
+  font-size: 2.7rem;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.subtext p {
+  line-height: 1.4rem;
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .headmasterContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .subtext {
+    padding: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .headmasterImg {
+    width: 200px;
+    height: 200px;
+  }
+  .subtext h2 {
+    font-size: 2rem;
+  }
+}
