@@ -1,24 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Condensed:wght@400;500;600;700&display=swap");
 
+:root {
+  --primary: #0f2747;
+  --primary-light: #1769aa;
+  --accent: #f4b942;
+
+  --background: #f5f8fc;
+  --secondary: #ffffff;
+  --white: #ffffff;
+
+  --text: #172033;
+  --text-light: #667085;
+  --border: #e5eaf1;
+
+  --shadow-sm: 0 4px 15px rgba(15, 39, 71, 0.06);
+  --shadow-md: 0 12px 35px rgba(15, 39, 71, 0.10);
+  --shadow-lg: 0 20px 50px rgba(15, 39, 71, 0.14);
+
+  --radius: 18px;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
 }
 
-a{
+a {
+  color: inherit;
   text-decoration: none;
-  color: black;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+::selection {
+  color: var(--white);
+  background: var(--primary-light);
+}
+
+.sectionHeader {
+  position: relative;
+  color: var(--primary);
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.underline {
+  width: 70px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 20px;
+  margin: 0 auto 45px;
+}

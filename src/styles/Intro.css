@@ -1,64 +1,89 @@
-.introContainer{
-  margin-top: 63px;
+.introContainer {
+  margin-top: 72px;
 }
 
 .main {
   position: relative;
+
   width: 100%;
-  height: clamp(600px, 50vw, 800px);
-  margin: auto;
+  height: clamp(600px, 70vh, 800px);
+
   overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+
+  text-align: center;
 }
 
 .bg-slide {
   position: absolute;
+
   inset: 0;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
   opacity: 0;
+
   transition: opacity 1.5s ease-in-out;
+
   z-index: 0;
 }
 
 .bg-slide.active {
   opacity: 1;
-  animation: zoomIn 6s ease-in-out forwards;
+
+  animation: zoomIn 8s ease-in-out forwards;
 }
 
 @keyframes zoomIn {
   from {
     transform: scale(1);
   }
+
   to {
-    transform: scale(1.1);
+    transform: scale(1.08);
   }
 }
 
 .overlay {
   position: absolute;
+
   inset: 0;
-  background: #00000088;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15, 39, 71, 0.88),
+      rgba(15, 39, 71, 0.48)
+    );
+
   z-index: 1;
 }
 
 .content {
   position: relative;
+
   z-index: 2;
-  text-align: center;
-  padding: 0 20px;
+
+  max-width: 900px;
+
+  padding: 0 25px;
+
+  color: var(--white);
+
   animation: fadeUp 1s ease forwards;
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(35px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -66,23 +91,53 @@
 }
 
 .content h1 {
-  font-size: 3.3rem;
-  margin: 0 0 10px;
+  margin: 0 0 18px;
+
   color: var(--white);
+
   font-family: "Roboto Condensed", sans-serif;
+
+  font-size: clamp(2.5rem, 6vw, 5rem);
+
+  font-weight: 700;
+
+  line-height: 1.05;
+
+  letter-spacing: -1px;
+
+  text-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
 }
 
 .content p {
-  color: var(--white);
-  font-size: 1.3rem;
-  margin: 0;
+  max-width: 700px;
+
+  margin: auto;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: clamp(1rem, 2vw, 1.25rem);
+
+  line-height: 1.8;
 }
 
 @media (max-width: 600px) {
-  .content h1 {
-    font-size: 2rem;
+  .introContainer {
+    margin-top: 64px;
   }
+
+  .main {
+    min-height: 600px;
+  }
+
+  .content {
+    padding: 0 20px;
+  }
+
+  .content h1 {
+    font-size: 2.5rem;
+  }
+
   .content p {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }

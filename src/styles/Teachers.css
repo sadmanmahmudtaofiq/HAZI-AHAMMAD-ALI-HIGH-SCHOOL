@@ -1,71 +1,195 @@
+.teachers {
+  padding: 90px 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f5f8fc 0%,
+      #eef4fa 100%
+    );
+}
+
 .teachersContainer {
   max-width: 1200px;
+
   margin: auto;
-  margin-bottom: 50px;
+
+  padding: 0 25px;
 }
+
 .teacherSection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: 24px;
 }
 
 .teacherSection section {
-  height: auto;
-  background-color: var(--secondary);
-  text-align: center;
-  padding: 30px 10px;
+  position: relative;
+
+  min-height: 330px;
+
+  padding: 32px 22px;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
   display: flex;
+
   flex-direction: column;
-  border-radius: 10px;
-  transition: all 0.2s;
-  gap: 10px;
+
   align-items: center;
-  box-shadow:
-    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  justify-content: center;
+
+  gap: 8px;
+
+  text-align: center;
+
+  box-shadow: var(--shadow-sm);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.teacherSection section {
+  position: relative;
+
+  min-height: 330px;
+
+  padding: 32px 22px;
+
+  background: #ffffff;
+
+  border: 1px solid #e8edf3;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  text-align: center;
+
+  box-shadow: 0 6px 20px rgba(15, 39, 71, 0.06);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .teacherSection section:hover {
-  scale: 1.01;
-  box-shadow:
-    rgba(0, 0, 0, 0.212) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  transform: translateY(-7px);
+
+  box-shadow: 0 15px 35px rgba(15, 39, 71, 0.11);
+}
+
+.teacherSection section:hover {
+  transform: translateY(-10px);
+
+  border-color: rgba(23, 105, 170, 0.2);
+
+  box-shadow: var(--shadow-lg);
 }
 
 .teacherSection section img {
-  width: 100px;
-  height: 100px;
+  width: 125px;
+  height: 125px;
+
   object-fit: cover;
-  border-radius: 100%;
-  transition: all 0.2s;
+
+  border-radius: 50%;
+
+  border: 5px solid #edf4fa;
+
+  outline: 2px solid rgba(23, 105, 170, 0.15);
+
+  margin-bottom: 10px;
+
   cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
 }
-.teacherSection section img:hover {
-  scale: 1.1;
+
+.teacherSection section:hover img {
+  transform: scale(1.06);
+
+  border-color: #dcecf8;
 }
+
 .teacherSection .name {
-  font-size: 1.3rem;
-  font-weight: 600;
+  margin-top: 5px;
+
+  color: var(--primary);
+
+  font-size: 1.15rem;
+
+  font-weight: 700;
+
+  line-height: 1.35;
+
+  transition: color 0.25s ease;
+}
+
+.teacherSection .name:hover {
+  color: var(--primary-light);
 }
 
 .teacherSection section p:nth-child(3) {
-  color: var(--accent);
-}
+  margin-top: 3px;
 
-.teacherSection section span {
-  background-color: var(--primary);
-  color: var(--white);
-  width: fit-content;
-  margin: auto;
-  padding: 10px 20px;
+  color: var(--primary-light);
+
   font-size: 0.9rem;
-  border-radius: 20px;
+
+  font-weight: 600;
 }
 
-@media (max-width: 500px) {
+.teacherSection section p:nth-child(4) {
+  margin-top: 5px;
+
+  padding: 7px 14px;
+
+  color: #667085;
+
+  background: #f4f7fa;
+
+  border-radius: 30px;
+
+  font-size: 0.78rem;
+}
+
+@media (max-width: 650px) {
+  .teachers {
+    padding: 70px 0;
+  }
+
+  .teachersContainer {
+    padding: 0 18px;
+  }
+
   .teacherSection {
-    padding: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .teacherSection section {
+    min-height: 300px;
   }
 }
