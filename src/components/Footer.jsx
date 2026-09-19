@@ -47,16 +47,13 @@ function Footer() {
           <h3>Quick Links</h3>
           <ul>
             <li>
-              <a href="#timings">School Timings</a>
+              <a href="#schoolTimings">School Timings</a>
             </li>
             <li>
               <a href="#headmaster">Headmaster</a>
             </li>
             <li>
               <a href="#teachers">Teachers</a>
-            </li>
-            <li>
-              <a href="#students">A+ Students</a>
             </li>
             <li>
               <a href="#contact">Contact Us</a>

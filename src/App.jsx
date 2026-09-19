@@ -1,18 +1,24 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header";
-import Intro from "./components/Intro";
-import Timings from "./components/Timings";
-import Headmaster from "./components/Headmaster";
-import Achievers from "./components/Achievers";
-import Teachers from "./components/Teachers";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-const App = () => {
+import Header from "./components/Header.jsx";
+import Intro from "./components/Intro.jsx";
+import Timings from "./components/Timings.jsx";
+import Headmaster from "./components/Headmaster.jsx";
+import Achievers from "./components/Achievers.jsx";
+import Teachers from "./components/Teachers.jsx";
+import Contact from "./components/Contact.jsx";
+import Footer from "./components/Footer.jsx";
+import TeacherDetail from "./components/TeacherDetail.jsx";
+
+const Home = () => {
   return (
-    <main>
-      <Header />
+    <>
       <Intro />
       <Timings />
       <Headmaster />
@@ -20,7 +26,20 @@ const App = () => {
       <Achievers />
       <Contact />
       <Footer />
-    </main>
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:username" element={<TeacherDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

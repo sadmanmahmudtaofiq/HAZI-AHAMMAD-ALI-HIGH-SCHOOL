@@ -22,7 +22,7 @@ const Intro = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="introContainer">
       <div className="main">
         {/* Background layers (crossfade) */}
         {images.map((img, i) => (

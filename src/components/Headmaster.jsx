@@ -1,26 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Headmaster.css";
 import HeadmasterImg from "../assets/headmaster.jpg";
+import { Link } from "react-router-dom";
 
 const Headmaster = () => {
   const schoolName = "Hazi Aahmmad Ali High School";
   return (
-    <div className="headmaster">
+    <div className="headmaster" id="headmaster">
       <div className="headmasterContainer">
         <div className="info">
-          <a href="#">
+          <Link to="/headmaster">
             <img
               className="headmasterImg"
               src={HeadmasterImg}
               alt="Headmaster"
               loading="lazy"
             />
-          </a>
+          </Link>
         </div>
         <div className="subtext">
-          <a href="#">
+          <Link to="/headmaster">
             <h2>Joy Islam</h2>
-          </a>
+          </Link>
           <p>
             Welcome to {schoolName}! With over 20 years of experience in
             education, I am committed to fostering an environment where every

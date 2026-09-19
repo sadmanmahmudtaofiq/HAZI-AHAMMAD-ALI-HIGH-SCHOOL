@@ -12,7 +12,7 @@ const Timings = () => {
   ];
 
   return (
-    <div className="timingsContainer">
+    <div className="timingsContainer" id="schoolTimings">
       <div className="timingsHeader">
         <h1 className="sectionHeader">School Timings</h1>
         <div className="underline"></div>
