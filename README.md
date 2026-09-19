@@ -1,16 +1,92 @@
-# React + Vite
+# Hazi Ahammad Ali High School
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive school website built with React and Vite for Hazi Ahammad Ali High School.
 
-Currently, two official plugins are available:
+The website provides information about the school, teachers, achievements, contact details, and individual teacher profiles.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Repository
 
-## React Compiler
+[GitHub Repository](https://github.com/sadmanmahmudtaofiq/HAZI-AHAMMAD-ALI-HIGH-SCHOOL)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Responsive school website
+- School introduction section
+- Teacher information and profiles
+- Individual teacher detail pages
+- Teacher profile images
+- Teacher subjects and experience
+- Teacher descriptions
+- Facebook profile links
+- Achievements section
+- Headmaster information
+- School timings
+- Contact section
+- Responsive navigation
+- React Router navigation
+- Separate CSS files for each component
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies Used
+
+- React
+- Vite
+- React Router DOM
+- JavaScript
+- HTML5
+- CSS3
+
+## Project Structure
+
+```text
+HAZI-AHAMMAD-ALI-HIGH-SCHOOL/
+│
+├── public/
+│   └── makima.png
+│
+├── src/
+│   │
+│   ├── assets/
+│   │   ├── ferdous.jpg
+│   │   ├── anik.jpg
+│   │   ├── ifti.jpg
+│   │   ├── shofiqul.jpg
+│   │   ├── headmaster.jpg
+│   │   ├── sumaiya.jpg
+│   │   └── unknown.jpg
+│   │
+│   ├── components/
+│   │   ├── Achievers.jsx
+│   │   ├── Contact.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   ├── Headmaster.jsx
+│   │   ├── Intro.jsx
+│   │   ├── TeacherDetail.jsx
+│   │   ├── Teachers.jsx
+│   │   └── Timings.jsx
+│   │
+│   ├── styles/
+│   │   ├── Achievers.css
+│   │   ├── Contact.css
+│   │   ├── Footer.css
+│   │   ├── Header.css
+│   │   ├── Headmaster.css
+│   │   ├── Intro.css
+│   │   ├── TeacherDetail.css
+│   │   ├── Teachers.css
+│   │   └── Timings.css
+│   │
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+├── vite.config.js
+└── debug.log
+```
