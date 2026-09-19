@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Achievers.css";
+import unknown from "../assets/unknown.jpg";
 
 const Achievers = () => {
   const achievers = [
@@ -8,42 +9,42 @@ const Achievers = () => {
       class: "10-A",
       grade: "A+",
       GPA: "5.0",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
     {
       name: "Alo",
       class: "10-B",
       grade: "A+",
       GPA: "5.0",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
     {
       name: "Emily Carter",
       class: "10-A",
       grade: "A+",
       GPA: "5.0",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
     {
       name: "Michael Anderson",
       class: "10-C",
       grade: "A+",
       GPA: "5.0",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
     {
       name: "Olivia Martinez",
       class: "10-B",
       grade: "A+",
       GPA: "5.0",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
     {
       name: "James Thompson",
       class: "10-C",
       grade: "A+",
       GPA: "5.0",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
   ];
   return (

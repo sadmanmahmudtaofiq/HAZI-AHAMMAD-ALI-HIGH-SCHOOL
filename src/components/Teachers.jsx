@@ -1,5 +1,12 @@
 import React from "react";
 import "../styles/Teachers.css";
+import ferdous from "../assets/ferdous.jpg";
+import anik from "../assets/anik.jpg";
+import ifti from "../assets/ifti.jpg";
+import shofiqul from "../assets/shofiqul.jpg";
+import unknown from "../assets/unknown.jpg";
+import headmaster from "../assets/headmaster.jpg";
+import sumaiya from "../assets/sumaiya.jpg";
 
 const Teachers = () => {
   const teachers = [
@@ -7,55 +14,55 @@ const Teachers = () => {
       name: "Md Ferdous Hasan Emon",
       subject: "Math, English 1st, History",
       experience: "4",
-      pfp: "/src/assets/ferdous.jpg",
+      pfp: ferdous,
     },
     {
       name: "Anik Sarkar",
       subject: "Science",
       experience: "4",
-      pfp: "/src/assets/anik.jpg",
+      pfp: anik,
     },
     {
       name: "Mahmudul Hassan Ifti",
       subject: "English 1st & 2nd, ITC",
       experience: "10",
-      pfp: "/src/assets/ifti.jpg",
+      pfp: ifti,
     },
     {
       name: "M. Shofiqul Islam",
       subject: "Islam, Agriculture",
       experience: "20",
-      pfp: "/src/assets/shofiqul.jpg",
+      pfp: shofiqul,
     },
     {
       name: "Tuli Islam",
       subject: "Bangla 2nd, Civic",
       experience: "1",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
     {
       name: "Choiti Akter",
       subject: "Bangla 2nd",
       experience: "1",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
     {
       name: "Chompa Akter",
       subject: "English 1st, Bangla 1st",
       experience: "1",
-      pfp: "/src/assets/unknown.jpg",
+      pfp: unknown,
     },
     {
       name: "Sumaiya Hock",
       subject: "Bangla 1st",
       experience: "3",
-      pfp: "/src/assets/sumaiya.jpg",
+      pfp: sumaiya,
     },
     {
       name: "Joy Islam",
       subject: "Math",
       experience: "20",
-      pfp: "/src/assets/headmaster.jpg",
+      pfp: headmaster,
     },
   ];
   return (
