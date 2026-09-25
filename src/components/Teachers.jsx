@@ -1,110 +1,149 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Teachers.css";
-
-import ferdous from "../assets/ferdous.jpg";
-import anik from "../assets/anik.jpg";
-import ifti from "../assets/ifti.jpg";
-import shofiqul from "../assets/shofiqul.jpg";
-import unknown from "../assets/unknown.jpg";
-import headmaster from "../assets/headmaster.jpg";
-import sumaiya from "../assets/sumaiya.jpg";
+import { teachersData } from "../data/teachers.js";
+import SectionHeader from "./SectionHeader.jsx";
+import Reveal from "./Reveal.jsx";
+import SectionBlurBackdrop from "./SectionBlurBackdrop.jsx";
 
 const Teachers = () => {
-   const teachers = [
-    {
-      name: "Md Ferdous Hasan Emon",
-      username: "ferdous",
-      subject: "Math, English 1st, History",
-      experience: "4",
-      pfp: ferdous,
-    },
-    {
-      name: "Anik Sarkar",
-      username: "aniksarkar",
-      subject: "Science",
-      experience: "4",
-      pfp: anik,
-    },
-    {
-      name: "Mahmudul Hassan Ifti",
-      username: "ifti",
-      subject: "English 1st & 2nd, ITC",
-      experience: "10",
-      pfp: ifti,
-    },
-    {
-      name: "Joy Islam",
-      username: "headmaster",
-      subject: "Math",
-      experience: "20",
-      pfp: headmaster,
-    },
-    {
-      name: "M. Shofiqul Islam",
-      username: "shofiqul",
-      subject: "Islam, Agriculture",
-      experience: "20",
-      pfp: shofiqul,
-    },
-    {
-      name: "Tuli Islam",
-      username: "tuli",
-      subject: "Bangla 2nd, Civic",
-      experience: "1",
-      pfp: unknown,
-    },
-    {
-      name: "Choiti Akter",
-      username: "choitti",
-      subject: "Bangla 2nd",
-      experience: "1",
-      pfp: unknown,
-    },
-    {
-      name: "Chompa Akter",
-      username: "chompa",
-      subject: "English 1st, Bangla 1st",
-      experience: "1",
-      pfp: unknown,
-    },
-    {
-      name: "Sumaiya Hock",
-      username: "sumaiya",
-      subject: "Bangla 1st",
-      experience: "3",
-      pfp: sumaiya,
-    },
-  ];
+  const [filter, setFilter] = useState("all");
+
+  const filteredTeachers = teachersData.filter((t) => {
+    if (filter === "all") return true;
+    if (filter === "senior") return parseInt(t.experience) >= 10;
+    if (filter === "science") return t.subject.toLowerCase().includes("science") || t.subject.toLowerCase().includes("math");
+    if (filter === "languages") return t.subject.toLowerCase().includes("english") || t.subject.toLowerCase().includes("bangla");
+    return true;
+  });
 
   return (
-    <div className="teachers" id="teachers">
-      <div className="teachersContainer">
-        <h1 className="sectionHeader">Our Teachers</h1>
-        <div className="underline"></div>
+    <section className="section-wrapper teachers-section" id="teachers" aria-label="Faculty and Teachers">
+      <SectionBlurBackdrop variant="center" />
+      <div className="site-container">
+        <Reveal>
+          <SectionHeader
+            badge="Academic Faculty"
+            title="Our Distinguished Teachers"
+            subtitle="Meet our committed educators and subject experts inspiring academic rigor and character building every day."
+          />
+        </Reveal>
 
-        <div className="teacherSection">
-          {teachers.map((teacher) => (
-            <section key={teacher.username}>
-              <Link to={`/${teacher.username}`}>
-                <img
-                  src={teacher.pfp}
-                  alt={teacher.name}
-                  loading="lazy"
-                />
-              </Link>
+        {/* Filter Tabs */}
+        <Reveal delay={100}>
+          <div className="faculty-filter-bar">
+            <button
+              type="button"
+              className={`faculty-tab ${filter === "all" ? "is-active" : ""}`}
+              onClick={() => setFilter("all")}
+            >
+              All Faculty ({teachersData.length})
+            </button>
+            <button
+              type="button"
+              className={`faculty-tab ${filter === "senior" ? "is-active" : ""}`}
+              onClick={() => setFilter("senior")}
+            >
+              Senior Faculty (10+ Yrs)
+            </button>
+            <button
+              type="button"
+              className={`faculty-tab ${filter === "science" ? "is-active" : ""}`}
+              onClick={() => setFilter("science")}
+            >
+              Science & Math
+            </button>
+            <button
+              type="button"
+              className={`faculty-tab ${filter === "languages" ? "is-active" : ""}`}
+              onClick={() => setFilter("languages")}
+            >
+              Language & Humanities
+            </button>
+          </div>
+        </Reveal>
 
-              <Link to={`/${teacher.username}`}>
-                <p className="name">{teacher.name}</p>
-              </Link>
+        {/* Faculty Cards Grid */}
+        <div className="faculty-grid">
+          {filteredTeachers.map((teacher, index) => (
+            <Reveal key={teacher.username} delay={(index % 4) * 80}>
+              <article className="teacher-modern-card">
+                <div className="card-top-decor" aria-hidden="true" />
+                
+                <Link
+                  to={`/${teacher.username}`}
+                  className="teacher-avatar-link"
+                  aria-label={`View profile of ${teacher.name}`}
+                >
+                  <div className="teacher-avatar-wrap">
+                    <img
+                      src={teacher.pfp}
+                      alt={teacher.name}
+                      className="teacher-avatar-img"
+                      loading="lazy"
+                    />
+                    <div className="avatar-hover-lens" aria-hidden="true">
+                      <i className="ri-search-eye-line" />
+                    </div>
+                  </div>
+                </Link>
 
-              <p>{teacher.subject}</p>
-              <p>Experience: {teacher.experience} years</p>
-            </section>
+                <div className="teacher-card-content">
+                  <div className="teacher-meta-pill">
+                    <span className="experience-badge">
+                      <i className="ri-history-line" aria-hidden="true" />
+                      {teacher.experience} {parseInt(teacher.experience) === 1 ? "Year" : "Years"} Exp.
+                    </span>
+                  </div>
+
+                  <h3 className="teacher-card-name">
+                    <Link to={`/${teacher.username}`}>{teacher.name}</Link>
+                  </h3>
+
+                  <p className="teacher-card-role">{teacher.role}</p>
+
+                  <div className="teacher-subjects-box">
+                    <span className="subject-icon">
+                      <i className="ri-book-open-line" aria-hidden="true" />
+                    </span>
+                    <span className="subject-text" title={teacher.subject}>
+                      {teacher.subject}
+                    </span>
+                  </div>
+
+                  <p className="teacher-card-summary">
+                    {teacher.description.slice(0, 110)}...
+                  </p>
+
+                  <div className="teacher-card-footer">
+                    <Link
+                      to={`/${teacher.username}`}
+                      className="teacher-view-btn"
+                    >
+                      <span>View Profile</span>
+                      <i className="ri-arrow-right-line" aria-hidden="true" />
+                    </Link>
+
+                    {teacher.facebook && (
+                      <a
+                        href={teacher.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="teacher-social-icon"
+                        title={`${teacher.name} on Facebook`}
+                        aria-label={`${teacher.name} on Facebook`}
+                      >
+                        <i className="ri-facebook-fill" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

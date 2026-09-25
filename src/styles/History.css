@@ -1,0 +1,451 @@
+/* ==========================================================================
+   SCHOOL HISTORY SECTION - INSTITUTIONAL HERITAGE & TIMELINE
+   ========================================================================== */
+
+.history-section {
+  background: linear-gradient(
+    180deg,
+    var(--bg-main) 0%,
+    var(--bg-surface-soft) 50%,
+    var(--bg-surface) 100%
+  );
+  position: relative;
+}
+
+/* Overview Narrative Card */
+.history-overview-card {
+  position: relative;
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 56px;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.history-overview-decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-light), var(--accent), var(--primary-light));
+}
+
+.history-badge-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(244, 185, 66, 0.14);
+  border: 1px solid rgba(244, 185, 66, 0.3);
+  border-radius: var(--radius-full);
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.history-card-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.history-card-paragraph {
+  font-size: clamp(0.92rem, 1.4vw, 1.02rem);
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 960px;
+  margin-bottom: 28px;
+}
+
+/* Overview Stats Grid */
+.history-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(15, 39, 71, 0.08);
+}
+
+.history-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--bg-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition-fast);
+}
+
+.history-stat-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-box-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(23, 105, 170, 0.1);
+  color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.stat-box-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-box-num {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.15;
+}
+
+.stat-box-txt {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   TIMELINE SECTION
+   ========================================================================== */
+.history-timeline-wrap {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto 60px;
+  padding: 20px 0;
+}
+
+/* Central spine */
+.timeline-central-spine {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 105, 170, 0.3) 0%,
+    var(--accent) 50%,
+    rgba(23, 105, 170, 0.3) 100%
+  );
+  border-radius: 3px;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: 40px;
+}
+
+.timeline-item.is-left {
+  left: 0;
+  padding-right: 44px;
+}
+
+.timeline-item.is-right {
+  left: 50%;
+  padding-left: 44px;
+}
+
+/* Beacon node dot */
+.timeline-node-beacon {
+  position: absolute;
+  top: 26px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 12px rgba(244, 185, 66, 0.6);
+  z-index: 3;
+}
+
+.timeline-item.is-left .timeline-node-beacon {
+  right: -11px;
+}
+
+.timeline-item.is-right .timeline-node-beacon {
+  left: -11px;
+}
+
+.node-beacon-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(244, 185, 66, 0.4);
+  animation: rotateRing 10s linear infinite;
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Glass Timeline Card */
+.timeline-glass-card {
+  position: relative;
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-smooth);
+}
+
+.timeline-glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 185, 66, 0.45);
+  box-shadow: var(--shadow-md);
+  background: var(--glass-bg-hover);
+}
+
+.timeline-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.timeline-year-pill {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  background: var(--accent);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(244, 185, 66, 0.35);
+}
+
+.timeline-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary-light);
+}
+
+.timeline-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.timeline-icon-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(23, 105, 170, 0.1);
+  color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.timeline-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.25;
+}
+
+.timeline-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+.timeline-highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(23, 105, 170, 0.08);
+  border: 1px solid rgba(23, 105, 170, 0.15);
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--primary-light);
+}
+
+/* Motto Banner */
+.history-motto-banner {
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(244, 185, 66, 0.3);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.motto-quote-ico {
+  font-size: 2.5rem;
+  color: var(--accent);
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.motto-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.motto-quote {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-style: italic;
+  color: var(--primary);
+  line-height: 1.6;
+}
+
+.motto-author {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES
+   ========================================================================== */
+[data-theme="dark"] .history-stat-strip {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .stat-box-icon {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .timeline-glass-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: rgba(251, 191, 36, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .timeline-year-pill {
+  color: #070D18;
+  background: var(--accent);
+}
+
+[data-theme="dark"] .timeline-icon-bubble {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .timeline-highlight-pill {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.25);
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .timeline-node-beacon {
+  background: #070D18;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 900px) {
+  .history-stat-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Shift timeline to single-column vertical track on left */
+  .timeline-central-spine {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-item {
+    width: 100% !important;
+    left: 0 !important;
+    padding-left: 54px !important;
+    padding-right: 0 !important;
+    margin-bottom: 28px;
+  }
+
+  .timeline-item.is-left .timeline-node-beacon,
+  .timeline-item.is-right .timeline-node-beacon {
+    left: 9px;
+    right: auto;
+  }
+
+  .history-overview-card {
+    padding: 28px 20px;
+  }
+
+  .history-motto-banner {
+    padding: 20px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .motto-quote-ico {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-stat-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .timeline-glass-card {
+    padding: 20px 16px;
+  }
+
+  .history-card-heading {
+    font-size: 1.35rem;
+  }
+}

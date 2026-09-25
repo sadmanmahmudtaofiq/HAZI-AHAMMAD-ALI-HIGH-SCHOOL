@@ -1,153 +1,279 @@
-.achieversContainer {
-  max-width: 1200px;
+/* ==========================================================================
+   ACHIEVERS SECTION - STUDENT HONORS
+   ========================================================================== */
 
-  margin: 0 auto;
-
-  padding: 90px 25px;
-
-  box-sizing: border-box;
+.achievers-section {
+  background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-surface) 50%, var(--bg-surface-soft) 100%);
+  position: relative;
 }
 
-.students {
+.achievers-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(270px, 1fr));
-
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  width: 100%;
 }
 
-.students section {
-  position: relative;
-
-  min-height: 250px;
-
-  background: var(--white);
-
-  border: 1px solid var(--border);
-
-  text-align: center;
-
-  padding: 35px 25px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  border-radius: var(--radius);
-
-  gap: 12px;
-
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: var(--shadow-sm);
-
-  overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.students section {
-  position: relative;
-
-  min-height: 250px;
-
-  background: #ffffff;
-
-  border: 1px solid #e8edf3;
-
-  text-align: center;
-
-  padding: 35px 25px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  border-radius: 18px;
-
-  gap: 12px;
-
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: 0 6px 20px rgba(15, 39, 71, 0.06);
-
-  overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.students section:hover {
-  transform: translateY(-7px);
-
-  box-shadow: 0 15px 35px rgba(15, 39, 71, 0.11);
-}
-
-.students section:hover {
-  transform: translateY(-8px);
-
-  box-shadow: var(--shadow-md);
-}
-
-.students section img {
-  width: 110px;
-  height: 110px;
-
-  object-fit: cover;
-
-  border-radius: 50%;
-
-  border: 5px solid #eef4fa;
-
-  margin-bottom: 5px;
-}
-
-.students section .name {
-  color: var(--primary);
-
-  font-size: 1.25rem;
-
-  font-weight: 700;
-}
-
-.students section p:nth-child(3) {
-  color: var(--primary-light);
-
-  font-size: 0.95rem;
-
-  font-weight: 600;
-}
-
-.students section span {
-  background: var(--primary);
-
-  color: var(--white);
-
-  width: fit-content;
-
-  margin: 5px auto 0;
-
-  padding: 7px 16px;
-
-  font-size: 0.78rem;
-
-  border-radius: 30px;
-
-  font-weight: 600;
-}
-
-@media (max-width: 500px) {
-  .achieversContainer {
-    padding: 70px 18px;
+@media (max-width: 900px) {
+  .achievers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
+}
 
-  .students {
+@media (max-width: 580px) {
+  .achievers-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
+}
+
+.achiever-glass-card {
+  position: relative;
+  background: var(--glass-bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+  transition: transform var(--transition-smooth),
+              box-shadow var(--transition-smooth),
+              border-color var(--transition-smooth),
+              background var(--transition-smooth);
+}
+
+.achiever-glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(244, 185, 66, 0.4);
+  background: #ffffff;
+}
+
+.achiever-medal-ribbon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(244, 185, 66, 0.12);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.achiever-avatar-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--accent), rgba(23, 105, 170, 0.4));
+  box-shadow: 0 6px 18px rgba(15, 39, 71, 0.08);
+  margin-bottom: 18px;
+  transition: transform var(--transition-smooth);
+}
+
+.achiever-glass-card:hover .achiever-avatar-wrap {
+  transform: scale(1.05);
+}
+
+.achiever-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  background: #edf2f7;
+}
+
+.achiever-rank-dot {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #ffffff;
+}
+
+.achiever-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+}
+
+.achiever-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.achiever-class {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+.achiever-result-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-surface-soft);
+  border: 1px solid rgba(15, 39, 71, 0.06);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.exam-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gpa-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.grade-val {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary-light);
+}
+
+.gpa-val {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--primary);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.achiever-distinction {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(244, 185, 66, 0.12);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.achiever-distinction i {
+  font-size: 0.8rem;
+}
+
+/* Stats Strip */
+.achievers-stats-strip {
+  margin-top: 48px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: var(--shadow-sm);
+}
+
+.achiever-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.metric-number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.metric-label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.metric-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(15, 39, 71, 0.1);
+}
+
+@media (max-width: 680px) {
+  .achievers-stats-strip {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .metric-divider {
+    width: 60%;
+    height: 1px;
+  }
+}
+
+/* ==========================================================================
+   ACHIEVERS DARK MODE OVERRIDES
+   ========================================================================== */
+[data-theme="dark"] .achiever-glass-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: rgba(251, 191, 36, 0.45);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="dark"] .achiever-avatar-img {
+  border-color: var(--bg-surface);
+  background: var(--bg-surface-soft);
+}
+
+[data-theme="dark"] .achiever-rank-dot {
+  border-color: var(--bg-surface);
+}
+
+[data-theme="dark"] .achiever-result-pill {
+  background: var(--bg-surface-soft);
+  border-color: var(--glass-border);
+}
+
+[data-theme="dark"] .gpa-val {
+  background: var(--primary-light);
+  color: #070D18;
+}
+
+[data-theme="dark"] .metric-divider {
+  background: rgba(255, 255, 255, 0.1);
 }

@@ -1,212 +1,220 @@
-import React from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../styles/TeacherDetail.css";
-
-import ferdous from "../assets/ferdous.jpg";
-import anik from "../assets/anik.jpg";
-import ifti from "../assets/ifti.jpg";
-import shofiqul from "../assets/shofiqul.jpg";
-import unknown from "../assets/unknown.jpg";
-import headmaster from "../assets/headmaster.jpg";
-import sumaiya from "../assets/sumaiya.jpg";
+import { teachersData } from "../data/teachers.js";
+import SectionBlurBackdrop from "./SectionBlurBackdrop.jsx";
 
 const TeacherDetail = () => {
-  const teachers = [
-    {
-      name: "Md Ferdous Hasan Emon",
-      username: "ferdous",
-      subject: "Math, English 1st, History",
-      experience: "4",
-      pfp: ferdous,
-      facebook: "https://www.facebook.com/ferdoushasan.emon",
-      description:
-        "Md Ferdous Hasan Emon is a dedicated teacher who focuses on helping students build a strong foundation in Mathematics, English, and History. He encourages students to understand concepts clearly and develop confidence in their studies.",
-    },
-
-    {
-      name: "Anik Sarkar",
-      username: "aniksarkar",
-      subject: "Science",
-      experience: "4",
-      pfp: anik,
-      facebook: "https://www.facebook.com/anik.sarkar.573653",
-      description:
-        "Anik Sarkar is a passionate Science teacher who helps students understand scientific concepts through clear explanations and practical examples. He encourages curiosity, logical thinking, and active learning in the classroom.",
-    },
-
-    {
-      name: "Mahmudul Hassan Ifti",
-      username: "ifti",
-      subject: "English 1st & 2nd, ITC",
-      experience: "10",
-      pfp: ifti,
-      facebook: "https://www.facebook.com/mahmudul.hassan.9237244",
-      description:
-        "Mahmudul Hassan Ifti is an experienced teacher with a strong focus on English and ITC. He works to improve students' language skills, communication abilities, and understanding of technology through structured and engaging lessons.",
-    },
-
-    {
-      name: "Joy Islam",
-      username: "headmaster",
-      subject: "Math",
-      experience: "20",
-      pfp: headmaster,
-      facebook: "https://www.facebook.com/joy.islam.668423",
-      description:
-        "Joy Islam is an experienced Mathematics teacher with 20 years of teaching experience. He focuses on building strong mathematical foundations and helping students approach difficult problems with confidence and logical thinking.",
-    },
-
-    {
-      name: "M. Shofiqul Islam",
-      username: "shofiqul",
-      subject: "Islam, Agriculture",
-      experience: "20",
-      pfp: shofiqul,
-      facebook: "https://www.facebook.com/mawlana.islamshofiqul",
-      description:
-        "M. Shofiqul Islam is an experienced teacher with extensive teaching experience in Islamic Studies and Agriculture. He helps students understand their subjects through simple explanations and practical knowledge.",
-    },
-
-    {
-      name: "Tuli Islam",
-      username: "tuli",
-      subject: "Bangla 2nd, Civic",
-      experience: "1",
-      pfp: unknown,
-      facebook: "https://facebook.com/tuli",
-      description:
-        "Tuli Islam is a dedicated teacher who teaches Bangla 2nd Paper and Civic Studies. She focuses on helping students understand important topics clearly while developing their knowledge and academic skills.",
-    },
-
-    {
-      name: "Choiti Akter",
-      username: "choitti",
-      subject: "Bangla 2nd",
-      experience: "1",
-      pfp: unknown,
-      facebook: "https://facebook.com/choitiakter",
-      description:
-        "Choiti Akter teaches Bangla 2nd Paper and supports students in developing their understanding of Bangla grammar, writing, and other important language skills.",
-    },
-
-    {
-      name: "Chompa Akter",
-      username: "chompa",
-      subject: "English 1st, Bangla 1st",
-      experience: "1",
-      pfp: unknown,
-      facebook: "https://facebook.com/chompaakter",
-      description:
-        "Chompa Akter teaches English 1st Paper and Bangla 1st Paper. She focuses on improving students' reading, writing, language, and communication skills through clear and student-friendly lessons.",
-    },
-
-    {
-      name: "Sumaiya Hock",
-      username: "sumaiya",
-      subject: "Bangla 1st",
-      experience: "3",
-      pfp: sumaiya,
-      facebook: "https://www.facebook.com/riya.hock",
-      description:
-        "Sumaiya Hock is a dedicated Bangla teacher who focuses on helping students develop their reading, writing, and literary understanding. She encourages students to appreciate the Bangla language and literature.",
-    },
-  ];
-
   const { username } = useParams();
 
-  const teacher = teachers.find((t) => t.username === username);
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [username]);
+
+  const teacher = teachersData.find((t) => t.username === username);
 
   if (!teacher) {
     return (
-      <div className="teacher-not-found">
-        <h2>Teacher not found</h2>
-
-        <Link to="/" className="not-found-link">
-          Back to Teachers
-        </Link>
-      </div>
+      <main className="teacher-not-found-wrap">
+        <div className="site-container">
+          <div className="not-found-glass-box">
+            <div className="not-found-icon" aria-hidden="true">
+              <i className="ri-user-unfollow-line" />
+            </div>
+            <h2>Faculty Profile Not Found</h2>
+            <p>
+              We could not find a faculty member corresponding to the identifier "
+              <strong>{username}</strong>".
+            </p>
+            <Link to="/#teachers" className="btn btn-primary">
+              <i className="ri-arrow-left-line" aria-hidden="true" />
+              <span>Back to Teachers Directory</span>
+            </Link>
+          </div>
+        </div>
+      </main>
     );
   }
 
+  // Related colleagues (excluding current)
+  const colleagues = teachersData
+    .filter((t) => t.username !== teacher.username)
+    .slice(0, 3);
+
   return (
-    <div className="teacher-detail-page">
-      <div className="teacher-detail-card">
-
-        <Link to="/" className="back-link">
-          ← Back to Teachers
-        </Link>
-
-        <div className="teacher-profile">
-
-          <div
-            className="teacher-profile-image"
-            style={{
-              backgroundImage: `url(${teacher.pfp})`,
-            }}
-          />
-
-          <h1>{teacher.name}</h1>
-
+    <main className="teacher-profile-page">
+      <SectionBlurBackdrop variant="reverse" />
+      <div className="site-container">
+        {/* Navigation Breadcrumb */}
+        <div className="profile-breadcrumbs">
+          <Link to="/" className="breadcrumb-link">
+            <i className="ri-home-4-line" aria-hidden="true" />
+            <span>Home</span>
+          </Link>
+          <span className="breadcrumb-separator">/</span>
+          <Link to="/#teachers" className="breadcrumb-link">
+            <span>Faculty</span>
+          </Link>
+          <span className="breadcrumb-separator">/</span>
+          <span className="breadcrumb-current">{teacher.name}</span>
         </div>
 
-        <div className="teacher-info">
+        {/* Main Profile Layout */}
+        <div className="profile-layout-grid">
+          {/* Left Column: Portrait Card */}
+          <aside className="profile-aside-card">
+            <div className="profile-photo-container">
+              <div className="profile-photo-ring">
+                <img
+                  src={teacher.pfp}
+                  alt={teacher.name}
+                  className="profile-photo-main"
+                />
+              </div>
+              <div className="profile-verified-badge" title="Official Faculty Member">
+                <i className="ri-checkbox-circle-fill" aria-hidden="true" />
+                <span>Verified Faculty</span>
+              </div>
+            </div>
 
-          {/* Subjects */}
-          <div className="teacher-info-item">
-            <span className="teacher-label">
-              Subjects:
-            </span>
+            <div className="profile-quick-stats">
+              <div className="quick-stat-row">
+                <span className="stat-label">
+                  <i className="ri-award-line" aria-hidden="true" /> Experience
+                </span>
+                <span className="stat-val">{teacher.experience} Years</span>
+              </div>
+              <div className="quick-stat-row">
+                <span className="stat-label">
+                  <i className="ri-building-line" aria-hidden="true" /> Institution
+                </span>
+                <span className="stat-val">Hazi Ahammad Ali</span>
+              </div>
+              <div className="quick-stat-row">
+                <span className="stat-label">
+                  <i className="ri-map-pin-line" aria-hidden="true" /> Campus
+                </span>
+                <span className="stat-val">Birabo, Rupganj</span>
+              </div>
+            </div>
 
-            <span className="teacher-subject">
-              {teacher.subject}
-            </span>
-          </div>
+            {teacher.facebook && (
+              <div className="profile-social-connect">
+                <a
+                  href={teacher.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-profile-social"
+                >
+                  <i className="ri-facebook-circle-fill" aria-hidden="true" />
+                  <span>Connect on Facebook</span>
+                </a>
+              </div>
+            )}
+          </aside>
 
-          {/* Experience */}
-          <div className="teacher-info-item">
-            <span className="teacher-label">
-              Experience:
-            </span>
+          {/* Right Column: Detailed Academic Dossier */}
+          <div className="profile-main-dossier">
+            <div className="dossier-header">
+              <div className="dossier-role-tag">
+                <span className="role-tag-pill">{teacher.role}</span>
+                <span className="tag-school">Hazi Ahammad Ali High School</span>
+              </div>
 
-            <span>
-              {teacher.experience} years
-            </span>
-          </div>
+              <h1 className="dossier-teacher-name">{teacher.name}</h1>
+              
+              <div className="dossier-subject-bar">
+                <i className="ri-book-mark-line" aria-hidden="true" />
+                <span className="subject-lead">Subjects Taught:</span>
+                <strong className="subject-list">{teacher.subject}</strong>
+              </div>
+            </div>
 
-          {/* Facebook */}
-          {teacher.facebook && (
-            <div className="teacher-info-item">
-              <span className="teacher-label">
-                Facebook:
-              </span>
+            <div className="dossier-divider" aria-hidden="true" />
 
-              <a
-                href={teacher.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="teacher-facebook"
-              >
-                Visit Facebook Profile
+            <div className="dossier-section">
+              <h2 className="dossier-section-title">
+                <i className="ri-user-voice-line" aria-hidden="true" />
+                <span>Academic Overview & Biography</span>
+              </h2>
+              <div className="dossier-bio-text">
+                <p>{teacher.description}</p>
+              </div>
+            </div>
+
+            <div className="dossier-section">
+              <h2 className="dossier-section-title">
+                <i className="ri-focus-3-line" aria-hidden="true" />
+                <span>Key Teaching Competencies</span>
+              </h2>
+              <div className="competencies-grid">
+                <div className="competency-card">
+                  <div className="comp-icon"><i className="ri-draft-line" /></div>
+                  <h4>Curriculum Mastery</h4>
+                  <p>In-depth coverage of National Curriculum standards and board examinations.</p>
+                </div>
+                <div className="competency-card">
+                  <div className="comp-icon"><i className="ri-user-heart-line" /></div>
+                  <h4>Student Mentorship</h4>
+                  <p>Personalized academic guidance and character development.</p>
+                </div>
+                <div className="competency-card">
+                  <div className="comp-icon"><i className="ri-presentation-line" /></div>
+                  <h4>Conceptual Learning</h4>
+                  <p>Encouraging logical thinking, problem-solving, and active classroom participation.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="dossier-footer-actions">
+              <Link to="/#teachers" className="btn btn-secondary">
+                <i className="ri-arrow-left-line" aria-hidden="true" />
+                <span>Browse All Faculty</span>
+              </Link>
+              <a href="/#contact" className="btn btn-primary">
+                <i className="ri-mail-line" aria-hidden="true" />
+                <span>Contact Administration</span>
               </a>
             </div>
-          )}
+          </div>
+        </div>
 
-          {/* Description */}
-          <div className="teacher-description">
-
-            <h3>
-              About the Teacher
-            </h3>
-
-            <p>
-              {teacher.description}
-            </p>
-
+        {/* Other Faculty Highlights */}
+        <section className="colleagues-section">
+          <div className="colleagues-header">
+            <h3>Other Distinguished Faculty</h3>
+            <Link to="/#teachers" className="see-all-link">
+              <span>View Directory</span>
+              <i className="ri-arrow-right-line" aria-hidden="true" />
+            </Link>
           </div>
 
-        </div>
+          <div className="colleagues-grid">
+            {colleagues.map((colleague) => (
+              <Link
+                key={colleague.username}
+                to={`/${colleague.username}`}
+                className="colleague-mini-card"
+              >
+                <img
+                  src={colleague.pfp}
+                  alt={colleague.name}
+                  className="colleague-mini-thumb"
+                  loading="lazy"
+                />
+                <div className="colleague-mini-meta">
+                  <h4>{colleague.name}</h4>
+                  <p>{colleague.role}</p>
+                  <span>{colleague.subject}</span>
+                </div>
+                <i className="ri-arrow-right-s-line chevron" aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 };
 

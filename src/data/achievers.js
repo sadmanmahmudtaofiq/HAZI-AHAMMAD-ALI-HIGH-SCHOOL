@@ -1,0 +1,58 @@
+import unknown from "../assets/unknown.jpg";
+
+export const achieversData = [
+  {
+    name: "Antora",
+    class: "Class 10-A",
+    grade: "A+",
+    gpa: "5.00",
+    exam: "SSC Examination",
+    pfp: unknown,
+    distinction: "Golden A+",
+  },
+  {
+    name: "Alo",
+    class: "Class 10-B",
+    grade: "A+",
+    gpa: "5.00",
+    exam: "SSC Examination",
+    pfp: unknown,
+    distinction: "Golden A+",
+  },
+  {
+    name: "Emily Carter",
+    class: "Class 10-A",
+    grade: "A+",
+    gpa: "5.00",
+    exam: "SSC Examination",
+    pfp: unknown,
+    distinction: "General A+",
+  },
+  {
+    name: "Michael Anderson",
+    class: "Class 10-C",
+    grade: "A+",
+    gpa: "5.00",
+    exam: "SSC Examination",
+    pfp: unknown,
+    distinction: "General A+",
+  },
+  {
+    name: "Olivia Martinez",
+    class: "Class 10-B",
+    grade: "A+",
+    gpa: "5.00",
+    exam: "SSC Examination",
+    pfp: unknown,
+    distinction: "General A+",
+  },
+  {
+    name: "James Thompson",
+    class: "Class 10-C",
+    grade: "A+",
+    gpa: "5.00",
+    exam: "SSC Examination",
+    pfp: unknown,
+    distinction: "General A+",
+  },
+];
